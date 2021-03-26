@@ -1,9 +1,6 @@
-package com.example.demo.controllers;
-
-import java.util.Optional;
+package com.example.demo.unit_testings.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -57,5 +54,14 @@ public class UserController {
 		userRepository.save(user);
 		return ResponseEntity.ok(user);
 	}
-	
+
+	@PostMapping("/login")
+	public ResponseEntity<User> login(@RequestBody CreateUserRequest createUserRequest) {
+		User user = userRepository.findByUsername(createUserRequest.getUsername());
+		if(null != null && user.getPassword() == createUserRequest.getPassword()){
+			return ResponseEntity.ok(user);
+		}else{
+			return ResponseEntity.badRequest().build();
+		}
+	}
 }
