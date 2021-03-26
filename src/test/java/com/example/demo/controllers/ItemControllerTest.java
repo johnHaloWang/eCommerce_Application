@@ -1,4 +1,4 @@
-package com.example.demo.unit_testings.controllers;
+package com.example.demo.controllers;
 
 import com.example.demo.TestUtils;
 import com.example.demo.model.persistence.Item;

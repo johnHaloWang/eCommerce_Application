@@ -1,4 +1,4 @@
-package com.example.demo.unit_testings.controllers;
+package com.example.demo.controllers;
 
 import com.example.demo.TestUtils;
 import com.example.demo.model.persistence.User;
@@ -51,7 +51,7 @@ public class UserControllerTest {
     }
 
     @Test
-    public void create_user_happy_path_badPassword(){
+    public void create_user_badPassword(){
         request.setPassword("123456");
         final ResponseEntity<User> resp = userController.createUser(request);
         assertNotNull(resp);
@@ -61,8 +61,7 @@ public class UserControllerTest {
     }
 
     @Test
-    public void create_user_happy_path_badRequest_password_isNotEqualTo_confirmPassword(){
-        request.setPassword("123456");
+    public void create_user_badRequest_password_isNotEqualTo_confirmPassword(){
         request.setPassword("1234567");
         final ResponseEntity<User> resp = userController.createUser(request);
         assertNotNull(resp);
@@ -100,4 +99,24 @@ public class UserControllerTest {
         assertNull(ans);
         assertEquals(TestUtils.NOT_FOUND, resp.getStatusCodeValue());
     }
+
+    @Test
+    public void login_happy_path(){
+        userController.createUser(request);
+        final ResponseEntity<User> respLogin = userController.login(request);
+        User ans = respLogin.getBody();
+        assertNotNull(ans);
+        assertEquals(TestUtils.OK, respLogin.getStatusCodeValue());
+    }
+
+    @Test
+    public void login_bad_request(){
+        userController.createUser(request);
+        request.setUsername(TestUtils.WRONG_USERNAME);
+        final ResponseEntity<User> respLogin = userController.login(request);
+        User ans = respLogin.getBody();
+        assertNull(ans);
+        assertEquals(TestUtils.BAD_REQUEST, respLogin.getStatusCodeValue());
+    }
+
 }

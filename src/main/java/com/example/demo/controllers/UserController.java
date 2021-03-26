@@ -1,4 +1,4 @@
-package com.example.demo.unit_testings.controllers;
+package com.example.demo.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -58,7 +58,7 @@ public class UserController {
 	@PostMapping("/login")
 	public ResponseEntity<User> login(@RequestBody CreateUserRequest createUserRequest) {
 		User user = userRepository.findByUsername(createUserRequest.getUsername());
-		if(null != null && user.getPassword() == createUserRequest.getPassword()){
+		if(null != user && user.getPassword() == createUserRequest.getPassword()){
 			return ResponseEntity.ok(user);
 		}else{
 			return ResponseEntity.badRequest().build();
