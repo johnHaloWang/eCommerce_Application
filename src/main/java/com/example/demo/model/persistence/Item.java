@@ -13,7 +13,11 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
+import lombok.ToString;
 
+@Data
+@ToString(includeFieldNames = true)
 @Entity
 @Table(name = "item")
 public class Item {

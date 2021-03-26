@@ -1,7 +1,11 @@
 package com.example.demo.model.requests;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
+import lombok.ToString;
 
+@Data
+@ToString(includeFieldNames = true)
 public class CreateUserRequest {
 
 	@JsonProperty
