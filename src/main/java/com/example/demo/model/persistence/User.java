@@ -4,8 +4,11 @@ import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
+import lombok.ToString;
 
-
+@Data
+@ToString(includeFieldNames = true)
 @Entity
 @Table(name = "user")
 public class User {
