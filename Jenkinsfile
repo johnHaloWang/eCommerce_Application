@@ -32,10 +32,7 @@ pipeline {
         stage ('Compile Stage') {
             steps {
                 sh 'printenv'
-                //withMaven(mavenSettingsConfig: 'conf/setting.xml') {
-                    sh 'mvn clean install'
-                //}
-               
+                sh 'mvn clean compile' 
             }
         }
     }
