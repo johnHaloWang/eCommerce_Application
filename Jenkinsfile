@@ -31,8 +31,7 @@ pipeline {
 
         stage ('Compile Stage') {
             steps {
-                sh 'printenv'
-                sh 'mvn clean compile' 
+                sh 'mvn clean compile -e -X' 
             }
         }
     }
