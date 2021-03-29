@@ -22,10 +22,18 @@
 
 pipeline {
     agent any
+    tools {
+        maven 'Apache Maven 3.6.3'
+        jdk 'JDK1.8'
+    }
     stages {
 
         stage ('Compile Stage') {
             steps {
+                sh 'printenv'
+                withMaven(mavenSettingsConfig: 'maven-settings-global') {
+                    sh 'mvn clean package'
+                }
                
             }
         }
