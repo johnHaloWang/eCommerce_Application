@@ -13,13 +13,13 @@ pipeline {
         }
         stage ('Testing Stage') {
             steps {
-                sh 'mvn clean install'               
+                sh 'mvn test'               
             }
         }
-        //stage('Deployment Stage') {
-        //    steps {
-        //        sh 'mvn deploy'
-        //    }
-        //}
+        stage('Deployment Stage') {
+            steps {
+                sh 'mvn deploy'
+            }
+        }
     }
 }
