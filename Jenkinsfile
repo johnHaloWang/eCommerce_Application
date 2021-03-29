@@ -32,8 +32,8 @@ pipeline {
         stage ('Compile Stage') {
             steps {
                 sh 'printenv'
-                withMaven(mavenSettingsConfig: 'maven-settings-global') {
-                    sh 'mvn clean install -s mvn-settings.xml'
+                withMaven(mavenSettingsConfig: 'conf/setting.xml') {
+                    sh 'mvn clean install'
                 }
                
             }
