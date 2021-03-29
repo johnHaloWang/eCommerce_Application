@@ -26,7 +26,7 @@ pipeline {
 
         stage ('Compile Stage') {
             steps {
-                sh 'mvn --version'
+               
             }
         }
     }
