@@ -1,0 +1,520 @@
+Started by GitHub push by johnHaloWang
+Obtained Jenkinsfile from git https://github.com/johnHaloWang/eCommerce_Application.git
+Running in Durability level: MAX_SURVIVABILITY
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /opt/bitnami/jenkins/jenkins_home/workspace/project2
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential ba4896e1-2942-4fb0-8844-459f1d3f8904
+ > git rev-parse --is-inside-work-tree # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/johnHaloWang/eCommerce_Application.git # timeout=10
+Fetching upstream changes from https://github.com/johnHaloWang/eCommerce_Application.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.30.1'
+using GIT_ASKPASS to set credentials 
+ > git fetch --tags --force --progress -- https://github.com/johnHaloWang/eCommerce_Application.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 96235219f36c07d8e8720e3e4d105692eac20ea2 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 96235219f36c07d8e8720e3e4d105692eac20ea2 # timeout=10
+Commit message: "Update Jenkinsfile"
+ > git rev-list --no-walk 6c6b92442585558255f69c255815aaf3648f74c6 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Tool Install)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Compile Stage)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ mvn clean compile
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------------< com.example:auth-course >-----------------------
+[INFO] Building auth-course 0.0.1-SNAPSHOT
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ auth-course ---
+[INFO] Deleting /bitnami/jenkins/jenkins_home/workspace/project2/target
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ auth-course ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:compile (default-compile) @ auth-course ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 20 source files to /bitnami/jenkins/jenkins_home/workspace/project2/target/classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  7.226 s
+[INFO] Finished at: 2021-03-29T10:13:42Z
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Testing Stage)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ mvn test
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------------< com.example:auth-course >-----------------------
+[INFO] Building auth-course 0.0.1-SNAPSHOT
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ auth-course ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:compile (default-compile) @ auth-course ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:testResources (default-testResources) @ auth-course ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /bitnami/jenkins/jenkins_home/workspace/project2/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:testCompile (default-testCompile) @ auth-course ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 9 source files to /bitnami/jenkins/jenkins_home/workspace/project2/target/test-classes
+[INFO] /bitnami/jenkins/jenkins_home/workspace/project2/src/test/java/com/example/demo/unit_testings/model/persistence/CartTest.java: /bitnami/jenkins/jenkins_home/workspace/project2/src/test/java/com/example/demo/unit_testings/model/persistence/CartTest.java uses or overrides a deprecated API.
+[INFO] /bitnami/jenkins/jenkins_home/workspace/project2/src/test/java/com/example/demo/unit_testings/model/persistence/CartTest.java: Recompile with -Xlint:deprecation for details.
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.22.2:test (default-test) @ auth-course ---
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.example.demo.unit_testings.model.persistence.ItemTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.191 s - in com.example.demo.unit_testings.model.persistence.ItemTest
+[INFO] Running com.example.demo.unit_testings.model.persistence.CartTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.01 s - in com.example.demo.unit_testings.model.persistence.CartTest
+[INFO] Running com.example.demo.intergration_tests.UserControllerTests
+10:13:55.349 [main] DEBUG org.springframework.test.context.junit4.SpringJUnit4ClassRunner - SpringJUnit4ClassRunner constructor called with [class com.example.demo.intergration_tests.UserControllerTests]
+10:13:55.358 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+10:13:55.392 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+10:13:55.477 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.example.demo.intergration_tests.UserControllerTests] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+10:13:55.506 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.example.demo.intergration_tests.UserControllerTests], using SpringBootContextLoader
+10:13:55.525 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.example.demo.intergration_tests.UserControllerTests]: class path resource [com/example/demo/intergration_tests/UserControllerTests-context.xml] does not exist
+10:13:55.532 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.example.demo.intergration_tests.UserControllerTests]: class path resource [com/example/demo/intergration_tests/UserControllerTestsContext.groovy] does not exist
+10:13:55.534 [main] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.example.demo.intergration_tests.UserControllerTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+10:13:55.541 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.demo.intergration_tests.UserControllerTests]: UserControllerTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+10:13:55.744 [main] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.example.demo.intergration_tests.UserControllerTests]
+10:13:55.962 [main] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [/bitnami/jenkins/jenkins_home/workspace/project2/target/classes/com/example/demo/SareetaApplication.class]
+10:13:55.964 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.demo.SareetaApplication for test class com.example.demo.intergration_tests.UserControllerTests
+10:13:56.179 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.example.demo.intergration_tests.UserControllerTests]: using defaults.
+10:13:56.182 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+10:13:56.241 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@4f0100a7, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@3cdf2c61, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@13ad5cd3, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@1c33c17b, org.springframework.test.context.support.DirtiesContextTestExecutionListener@5bf0fe62, org.springframework.test.context.transaction.TransactionalTestExecutionListener@1e097d59, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@673be18f, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@6581dc0a, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@39de3d36, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@6ce86ce1, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@54e7df6a, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@3fed2870]
+10:13:56.253 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.example.demo.intergration_tests.UserControllerTests]
+10:13:56.254 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.example.demo.intergration_tests.UserControllerTests]
+10:13:56.261 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.example.demo.intergration_tests.UserControllerTests]
+10:13:56.262 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.example.demo.intergration_tests.UserControllerTests]
+10:13:56.263 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.example.demo.intergration_tests.UserControllerTests]
+10:13:56.263 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.example.demo.intergration_tests.UserControllerTests]
+10:13:56.264 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.example.demo.intergration_tests.UserControllerTests]
+10:13:56.265 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.example.demo.intergration_tests.UserControllerTests]
+10:13:56.269 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.example.demo.intergration_tests.UserControllerTests]
+10:13:56.269 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.example.demo.intergration_tests.UserControllerTests]
+10:13:56.281 [main] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@3d3e5463 testClass = UserControllerTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@64a40280 testClass = UserControllerTests, locations = '{}', classes = '{class com.example.demo.SareetaApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[[ImportsContextCustomizer@4b40f651 key = [org.springframework.boot.test.autoconfigure.web.servlet.MockMvcAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcSecurityAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcWebClientAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcWebDriverAutoConfiguration, org.springframework.boot.test.autoconfigure.json.JsonTestersAutoConfiguration, org.springframework.boot.autoconfigure.gson.GsonAutoConfiguration, org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration, org.springframework.boot.autoconfigure.jsonb.JsonbAutoConfiguration]], org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@47d9a273, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@1b11171f, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@242b836, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@807f33bd, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@229c6181], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true]], class annotated with @DirtiesContext [false] with mode [null].
+10:13:56.285 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.example.demo.intergration_tests.UserControllerTests]
+10:13:56.288 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.example.demo.intergration_tests.UserControllerTests]
+10:13:56.374 [main] DEBUG org.springframework.test.context.support.TestPropertySourceUtils - Adding inlined properties to environment: {spring.jmx.enabled=false, org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true, server.port=-1}
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.1.5.RELEASE)
+
+2021-03-29 10:13:57,697 INFO  [main] org.springframework.boot.StartupInfoLogger: Starting UserControllerTests on ip-172-31-5-152 with PID 31670 (started by jenkins in /bitnami/jenkins/jenkins_home/workspace/project2)
+2021-03-29 10:13:57,707 INFO  [main] org.springframework.boot.SpringApplication: No active profile set, falling back to default profiles: default
+2021-03-29 10:13:59,503 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate: Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-03-29 10:13:59,669 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate: Finished Spring Data repository scanning in 145ms. Found 4 repository interfaces.
+2021-03-29 10:14:01,241 INFO  [main] org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker: Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$39a0ad68] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-03-29 10:14:01,874 INFO  [main] com.zaxxer.hikari.HikariDataSource: HikariPool-1 - Starting...
+2021-03-29 10:14:02,333 INFO  [main] com.zaxxer.hikari.HikariDataSource: HikariPool-1 - Start completed.
+2021-03-29 10:14:02,569 INFO  [main] org.hibernate.jpa.internal.util.LogHelper: HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2021-03-29 10:14:02,753 INFO  [main] org.hibernate.Version: HHH000412: Hibernate Core {5.3.10.Final}
+2021-03-29 10:14:02,759 INFO  [main] org.hibernate.cfg.Environment: HHH000206: hibernate.properties not found
+2021-03-29 10:14:03,183 INFO  [main] org.hibernate.annotations.common.reflection.java.JavaReflectionManager: HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-03-29 10:14:03,539 INFO  [main] org.hibernate.dialect.Dialect: HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-03-29 10:14:05,683 INFO  [main] org.springframework.orm.jpa.AbstractEntityManagerFactoryBean: Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-03-29 10:14:07,693 WARN  [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration: spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-03-29 10:14:07,999 INFO  [main] org.springframework.security.web.DefaultSecurityFilterChain: Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@69d61a6f, org.springframework.security.web.context.SecurityContextPersistenceFilter@4b7a4c83, org.springframework.security.web.header.HeaderWriterFilter@7bad18f5, org.springframework.web.filter.CorsFilter@759b05d1, org.springframework.security.web.authentication.logout.LogoutFilter@59e4a044, com.example.demo.security.JWTAuthenticationFilter@2696b687, com.example.demo.security.JWTAuthenticationVerficationFilter@ea45a5b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4511146f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@84becbe, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@57f83c82, org.springframework.security.web.session.SessionManagementFilter@64e3bc2, org.springframework.security.web.access.ExceptionTranslationFilter@261609a7, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@248b2091]
+2021-03-29 10:14:09,014 INFO  [main] org.springframework.scheduling.concurrent.ExecutorConfigurationSupport: Initializing ExecutorService 'applicationTaskExecutor'
+2021-03-29 10:14:09,699 INFO  [main] org.springframework.mock.web.MockServletContext: Initializing Spring TestDispatcherServlet ''
+2021-03-29 10:14:09,700 INFO  [main] org.springframework.web.servlet.FrameworkServlet: Initializing Servlet ''
+2021-03-29 10:14:09,731 INFO  [main] org.springframework.web.servlet.FrameworkServlet: Completed initialization in 29 ms
+2021-03-29 10:14:09,809 INFO  [main] org.springframework.boot.StartupInfoLogger: Started UserControllerTests in 13.399 seconds (JVM running for 16.39)
+2021-03-29 10:14:10,308 INFO  [main] com.example.demo.controllers.UserController: UserController -> createUser method is called: CreateUserRequest(username=test, password=testPassword, confirmPassword=testPassword)
+2021-03-29 10:14:10,693 INFO  [main] com.example.demo.controllers.UserController: UserController -> createUser successful: test
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 15.847 s - in com.example.demo.intergration_tests.UserControllerTests
+[INFO] Running com.example.demo.controllers.OrderControllerTest
+2021-03-29 10:14:11,176 INFO  [main] com.example.demo.controllers.OrderController: OrderController -> submit method is called: 
+2021-03-29 10:14:11,179 ERROR [main] com.example.demo.controllers.OrderController: OrderController -> submit: user is null
+2021-03-29 10:14:11,188 INFO  [main] com.example.demo.controllers.OrderController: OrderController -> getOrdersForUser method is called: 
+2021-03-29 10:14:11,189 ERROR [main] com.example.demo.controllers.OrderController: OrderController -> submit: user is null
+2021-03-29 10:14:11,190 INFO  [main] com.example.demo.controllers.OrderController: OrderController -> getOrdersForUser method is called: 
+2021-03-29 10:14:11,191 INFO  [main] com.example.demo.controllers.OrderController: OrderController -> display username order history successful test
+2021-03-29 10:14:11,225 INFO  [main] com.example.demo.controllers.OrderController: OrderController -> submit method is called: 
+2021-03-29 10:14:11,229 INFO  [main] com.example.demo.controllers.OrderController: OrderController -> submit successful
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.437 s - in com.example.demo.controllers.OrderControllerTest
+[INFO] Running com.example.demo.controllers.UserControllerTest
+2021-03-29 10:14:11,392 INFO  [main] com.example.demo.controllers.UserController: UserController -> createUser method is called: CreateUserRequest(username=test, password=testPassword, confirmPassword=testPassword)
+2021-03-29 10:14:11,394 INFO  [main] com.example.demo.controllers.UserController: UserController -> createUser successful: test
+2021-03-29 10:14:11,396 INFO  [main] com.example.demo.controllers.UserController: UserController -> findById method is called: 0
+2021-03-29 10:14:11,403 INFO  [main] com.example.demo.controllers.UserController: UserController -> findById method is called: 1
+2021-03-29 10:14:11,406 INFO  [main] com.example.demo.controllers.UserController: UserController -> createUser method is called: CreateUserRequest(username=test, password=1234567, confirmPassword=testPassword)
+2021-03-29 10:14:11,408 INFO  [main] com.example.demo.controllers.UserController: UserController -> createUser method is called: CreateUserRequest(username=test, password=testPassword, confirmPassword=testPassword)
+2021-03-29 10:14:11,412 INFO  [main] com.example.demo.controllers.UserController: UserController -> createUser successful: test
+2021-03-29 10:14:11,416 INFO  [main] com.example.demo.controllers.UserController: UserController -> createUser method is called: CreateUserRequest(username=test, password=testPassword, confirmPassword=testPassword)
+2021-03-29 10:14:11,417 INFO  [main] com.example.demo.controllers.UserController: UserController -> createUser successful: test
+2021-03-29 10:14:11,422 INFO  [main] com.example.demo.controllers.UserController: UserController -> findByUserName method is called: 
+2021-03-29 10:14:11,424 INFO  [main] com.example.demo.controllers.UserController: UserController -> createUser method is called: CreateUserRequest(username=test, password=123456, confirmPassword=testPassword)
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.19 s - in com.example.demo.controllers.UserControllerTest
+[INFO] Running com.example.demo.controllers.ItemControllerTest
+2021-03-29 10:14:11,542 INFO  [main] com.example.demo.controllers.ItemController: ItemController -> getItems method is called
+2021-03-29 10:14:11,552 INFO  [main] com.example.demo.controllers.ItemController: ItemController -> getItemById method is called: 0
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.122 s - in com.example.demo.controllers.ItemControllerTest
+[INFO] Running com.example.demo.controllers.CartControllerTest
+2021-03-29 10:14:11,566 INFO  [main] com.example.demo.controllers.CartController: CartController -- addTocart function -- Adding modifications to cart for user ModifyCartRequest(username=test, itemId=0, quantity=1)
+2021-03-29 10:14:11,594 INFO  [main] com.example.demo.controllers.CartController: CartController: Modifications added to cart successfully for user test
+2021-03-29 10:14:11,603 INFO  [main] com.example.demo.controllers.CartController: CartController -> removeFromcart is called: Removing modifications from cart for user test
+2021-03-29 10:14:11,606 INFO  [main] com.example.demo.controllers.CartController: CartController -> removeFromcart, Modifications removed from cart successfully for user test
+2021-03-29 10:14:11,613 INFO  [main] com.example.demo.controllers.CartController: CartController -> removeFromcart is called: Removing modifications from cart for user wrong
+2021-03-29 10:14:11,615 ERROR [main] com.example.demo.controllers.CartController: CartController -> removeFromcart, User wrong not found. Cannot remove modifications.
+2021-03-29 10:14:11,622 INFO  [main] com.example.demo.controllers.CartController: CartController -- addTocart function -- Adding modifications to cart for user ModifyCartRequest(username=wrong, itemId=0, quantity=1)
+2021-03-29 10:14:11,626 ERROR [main] com.example.demo.controllers.CartController: CartController User wrong not found -- addTocart function . Cannot add modifications.
+2021-03-29 10:14:11,629 INFO  [main] com.example.demo.controllers.CartController: CartController -> removeFromcart is called: Removing modifications from cart for user test
+2021-03-29 10:14:11,630 ERROR [main] com.example.demo.controllers.CartController: CartController-> removeFromcart: item is null
+2021-03-29 10:14:11,634 INFO  [main] com.example.demo.controllers.CartController: CartController -- addTocart function -- Adding modifications to cart for user ModifyCartRequest(username=test, itemId=2, quantity=1)
+2021-03-29 10:14:11,637 ERROR [main] com.example.demo.controllers.CartController: CartController:  Item 2 not found -- addTocart function. Cannot add modifications.
+2021-03-29 10:14:11,642 INFO  [main] com.example.demo.controllers.CartController: CartController -> removeFromcart is called: Removing modifications from cart for user test
+2021-03-29 10:14:11,645 ERROR [main] com.example.demo.controllers.CartController: CartController-> removeFromcart: item is null
+2021-03-29 10:14:11,647 INFO  [main] com.example.demo.controllers.CartController: CartController -- addTocart function -- Adding modifications to cart for user ModifyCartRequest(username=test, itemId=0, quantity=1)
+2021-03-29 10:14:11,648 INFO  [main] com.example.demo.controllers.CartController: CartController: Modifications added to cart successfully for user test
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.087 s - in com.example.demo.controllers.CartControllerTest
+[INFO] Running com.example.demo.SareetaApplicationTests
+2021-03-29 10:14:11,656 INFO  [main] org.springframework.test.context.support.AbstractTestContextBootstrapper: Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.example.demo.SareetaApplicationTests], using SpringBootContextLoader
+2021-03-29 10:14:11,658 INFO  [main] org.springframework.test.context.support.AbstractContextLoader: Could not detect default resource locations for test class [com.example.demo.SareetaApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+2021-03-29 10:14:11,660 INFO  [main] org.springframework.test.context.support.AnnotationConfigContextLoaderUtils: Could not detect default configuration classes for test class [com.example.demo.SareetaApplicationTests]: SareetaApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2021-03-29 10:14:11,679 INFO  [main] org.springframework.boot.test.context.SpringBootTestContextBootstrapper: Found @SpringBootConfiguration com.example.demo.SareetaApplication for test class com.example.demo.SareetaApplicationTests
+2021-03-29 10:14:11,682 INFO  [main] org.springframework.test.context.support.AbstractTestContextBootstrapper: Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2021-03-29 10:14:11,688 INFO  [main] org.springframework.test.context.support.AbstractTestContextBootstrapper: Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@4ceb368b, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@1ddc5857, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@6f0df74, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@42bbd21c, org.springframework.test.context.support.DirtiesContextTestExecutionListener@57f1fbae, org.springframework.test.context.transaction.TransactionalTestExecutionListener@28901fe7, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@289b7efe, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@34ac72c3, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@6cd8c373, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@449f9628, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@37806ccb, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@606d2a92]
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.1.5.RELEASE)
+
+2021-03-29 10:14:11,743 INFO  [main] org.springframework.boot.StartupInfoLogger: Starting SareetaApplicationTests on ip-172-31-5-152 with PID 31670 (started by jenkins in /bitnami/jenkins/jenkins_home/workspace/project2)
+2021-03-29 10:14:11,747 INFO  [main] org.springframework.boot.SpringApplication: No active profile set, falling back to default profiles: default
+2021-03-29 10:14:12,050 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate: Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-03-29 10:14:12,082 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate: Finished Spring Data repository scanning in 25ms. Found 4 repository interfaces.
+2021-03-29 10:14:12,283 INFO  [main] org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker: Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$39a0ad68] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-03-29 10:14:12,455 INFO  [main] com.zaxxer.hikari.HikariDataSource: HikariPool-2 - Starting...
+2021-03-29 10:14:12,463 INFO  [main] com.zaxxer.hikari.HikariDataSource: HikariPool-2 - Start completed.
+2021-03-29 10:14:12,498 INFO  [main] org.hibernate.jpa.internal.util.LogHelper: HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2021-03-29 10:14:12,515 INFO  [main] org.hibernate.dialect.Dialect: HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-03-29 10:14:12,965 INFO  [main] org.springframework.orm.jpa.AbstractEntityManagerFactoryBean: Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-03-29 10:14:13,675 WARN  [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration: spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-03-29 10:14:13,841 INFO  [main] org.springframework.security.web.DefaultSecurityFilterChain: Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@73ac7716, org.springframework.security.web.context.SecurityContextPersistenceFilter@75e068dc, org.springframework.security.web.header.HeaderWriterFilter@5817b0d1, org.springframework.web.filter.CorsFilter@125ace20, org.springframework.security.web.authentication.logout.LogoutFilter@704ca8a8, com.example.demo.security.JWTAuthenticationFilter@7dbc77ca, com.example.demo.security.JWTAuthenticationVerficationFilter@4c25687b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@437a4e61, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@268eefe7, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5c21b22e, org.springframework.security.web.session.SessionManagementFilter@6ea1fc9, org.springframework.security.web.access.ExceptionTranslationFilter@53ccbc15, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7be9582e]
+2021-03-29 10:14:14,221 INFO  [main] org.springframework.scheduling.concurrent.ExecutorConfigurationSupport: Initializing ExecutorService 'applicationTaskExecutor'
+2021-03-29 10:14:14,547 INFO  [main] org.springframework.boot.StartupInfoLogger: Started SareetaApplicationTests in 2.851 seconds (JVM running for 21.128)
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.896 s - in com.example.demo.SareetaApplicationTests
+2021-03-29 10:14:14,585 INFO  [Thread-3] org.springframework.scheduling.concurrent.ExecutorConfigurationSupport: Shutting down ExecutorService 'applicationTaskExecutor'
+2021-03-29 10:14:14,593 INFO  [Thread-3] org.springframework.orm.jpa.AbstractEntityManagerFactoryBean: Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-03-29 10:14:14,593 INFO  [Thread-5] org.springframework.scheduling.concurrent.ExecutorConfigurationSupport: Shutting down ExecutorService 'applicationTaskExecutor'
+2021-03-29 10:14:14,597 INFO  [Thread-5] org.springframework.orm.jpa.AbstractEntityManagerFactoryBean: Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-03-29 10:14:14,604 INFO  [Thread-5] com.zaxxer.hikari.HikariDataSource: HikariPool-2 - Shutdown initiated...
+2021-03-29 10:14:14,607 INFO  [Thread-3] com.zaxxer.hikari.HikariDataSource: HikariPool-1 - Shutdown initiated...
+2021-03-29 10:14:14,616 INFO  [Thread-5] com.zaxxer.hikari.HikariDataSource: HikariPool-2 - Shutdown completed.
+2021-03-29 10:14:14,620 INFO  [Thread-3] com.zaxxer.hikari.HikariDataSource: HikariPool-1 - Shutdown completed.
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 35, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  28.862 s
+[INFO] Finished at: 2021-03-29T10:14:15Z
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Clean Install Stage)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ mvn clean install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------------< com.example:auth-course >-----------------------
+[INFO] Building auth-course 0.0.1-SNAPSHOT
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ auth-course ---
+[INFO] Deleting /bitnami/jenkins/jenkins_home/workspace/project2/target
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ auth-course ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:compile (default-compile) @ auth-course ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 20 source files to /bitnami/jenkins/jenkins_home/workspace/project2/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:testResources (default-testResources) @ auth-course ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /bitnami/jenkins/jenkins_home/workspace/project2/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:testCompile (default-testCompile) @ auth-course ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 9 source files to /bitnami/jenkins/jenkins_home/workspace/project2/target/test-classes
+[INFO] /bitnami/jenkins/jenkins_home/workspace/project2/src/test/java/com/example/demo/unit_testings/model/persistence/CartTest.java: /bitnami/jenkins/jenkins_home/workspace/project2/src/test/java/com/example/demo/unit_testings/model/persistence/CartTest.java uses or overrides a deprecated API.
+[INFO] /bitnami/jenkins/jenkins_home/workspace/project2/src/test/java/com/example/demo/unit_testings/model/persistence/CartTest.java: Recompile with -Xlint:deprecation for details.
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.22.2:test (default-test) @ auth-course ---
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.example.demo.unit_testings.model.persistence.ItemTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.203 s - in com.example.demo.unit_testings.model.persistence.ItemTest
+[INFO] Running com.example.demo.unit_testings.model.persistence.CartTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.019 s - in com.example.demo.unit_testings.model.persistence.CartTest
+[INFO] Running com.example.demo.intergration_tests.UserControllerTests
+10:14:30.294 [main] DEBUG org.springframework.test.context.junit4.SpringJUnit4ClassRunner - SpringJUnit4ClassRunner constructor called with [class com.example.demo.intergration_tests.UserControllerTests]
+10:14:30.308 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+10:14:30.342 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+10:14:30.432 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.example.demo.intergration_tests.UserControllerTests] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+10:14:30.468 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.example.demo.intergration_tests.UserControllerTests], using SpringBootContextLoader
+10:14:30.481 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.example.demo.intergration_tests.UserControllerTests]: class path resource [com/example/demo/intergration_tests/UserControllerTests-context.xml] does not exist
+10:14:30.487 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.example.demo.intergration_tests.UserControllerTests]: class path resource [com/example/demo/intergration_tests/UserControllerTestsContext.groovy] does not exist
+10:14:30.488 [main] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.example.demo.intergration_tests.UserControllerTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+10:14:30.490 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.demo.intergration_tests.UserControllerTests]: UserControllerTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+10:14:30.645 [main] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.example.demo.intergration_tests.UserControllerTests]
+10:14:30.819 [main] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [/bitnami/jenkins/jenkins_home/workspace/project2/target/classes/com/example/demo/SareetaApplication.class]
+10:14:30.830 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.demo.SareetaApplication for test class com.example.demo.intergration_tests.UserControllerTests
+10:14:31.097 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.example.demo.intergration_tests.UserControllerTests]: using defaults.
+10:14:31.103 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+10:14:31.143 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@332796d3, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@4f0100a7, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@3cdf2c61, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@13ad5cd3, org.springframework.test.context.support.DirtiesContextTestExecutionListener@1c33c17b, org.springframework.test.context.transaction.TransactionalTestExecutionListener@5bf0fe62, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@1e097d59, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@673be18f, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@6581dc0a, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@39de3d36, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@6ce86ce1, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@54e7df6a]
+10:14:31.153 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.example.demo.intergration_tests.UserControllerTests]
+10:14:31.155 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.example.demo.intergration_tests.UserControllerTests]
+10:14:31.157 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.example.demo.intergration_tests.UserControllerTests]
+10:14:31.159 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.example.demo.intergration_tests.UserControllerTests]
+10:14:31.160 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.example.demo.intergration_tests.UserControllerTests]
+10:14:31.161 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.example.demo.intergration_tests.UserControllerTests]
+10:14:31.163 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.example.demo.intergration_tests.UserControllerTests]
+10:14:31.163 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.example.demo.intergration_tests.UserControllerTests]
+10:14:31.164 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.example.demo.intergration_tests.UserControllerTests]
+10:14:31.165 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.example.demo.intergration_tests.UserControllerTests]
+10:14:31.181 [main] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@e70f13a testClass = UserControllerTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@3d3e5463 testClass = UserControllerTests, locations = '{}', classes = '{class com.example.demo.SareetaApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[[ImportsContextCustomizer@64a40280 key = [org.springframework.boot.test.autoconfigure.web.servlet.MockMvcAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcSecurityAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcWebClientAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcWebDriverAutoConfiguration, org.springframework.boot.test.autoconfigure.json.JsonTestersAutoConfiguration, org.springframework.boot.autoconfigure.gson.GsonAutoConfiguration, org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration, org.springframework.boot.autoconfigure.jsonb.JsonbAutoConfiguration]], org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@26e356f0, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@27f981c6, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@2d52216b, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@807f33bd, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@4d154ccd], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true]], class annotated with @DirtiesContext [false] with mode [null].
+10:14:31.185 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.example.demo.intergration_tests.UserControllerTests]
+10:14:31.185 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.example.demo.intergration_tests.UserControllerTests]
+10:14:31.274 [main] DEBUG org.springframework.test.context.support.TestPropertySourceUtils - Adding inlined properties to environment: {spring.jmx.enabled=false, org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true, server.port=-1}
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.1.5.RELEASE)
+
+2021-03-29 10:14:32,575 INFO  [main] org.springframework.boot.StartupInfoLogger: Starting UserControllerTests on ip-172-31-5-152 with PID 31815 (started by jenkins in /bitnami/jenkins/jenkins_home/workspace/project2)
+2021-03-29 10:14:32,594 INFO  [main] org.springframework.boot.SpringApplication: No active profile set, falling back to default profiles: default
+2021-03-29 10:14:34,418 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate: Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-03-29 10:14:34,589 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate: Finished Spring Data repository scanning in 148ms. Found 4 repository interfaces.
+2021-03-29 10:14:36,143 INFO  [main] org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker: Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$802be37f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-03-29 10:14:36,695 INFO  [main] com.zaxxer.hikari.HikariDataSource: HikariPool-1 - Starting...
+2021-03-29 10:14:37,062 INFO  [main] com.zaxxer.hikari.HikariDataSource: HikariPool-1 - Start completed.
+2021-03-29 10:14:37,279 INFO  [main] org.hibernate.jpa.internal.util.LogHelper: HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2021-03-29 10:14:37,414 INFO  [main] org.hibernate.Version: HHH000412: Hibernate Core {5.3.10.Final}
+2021-03-29 10:14:37,423 INFO  [main] org.hibernate.cfg.Environment: HHH000206: hibernate.properties not found
+2021-03-29 10:14:37,797 INFO  [main] org.hibernate.annotations.common.reflection.java.JavaReflectionManager: HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-03-29 10:14:38,330 INFO  [main] org.hibernate.dialect.Dialect: HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-03-29 10:14:40,300 INFO  [main] org.springframework.orm.jpa.AbstractEntityManagerFactoryBean: Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-03-29 10:14:42,179 WARN  [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration: spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-03-29 10:14:42,473 INFO  [main] org.springframework.security.web.DefaultSecurityFilterChain: Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@759b05d1, org.springframework.security.web.context.SecurityContextPersistenceFilter@768e40af, org.springframework.security.web.header.HeaderWriterFilter@4407fea2, org.springframework.web.filter.CorsFilter@2696b687, org.springframework.security.web.authentication.logout.LogoutFilter@4be3de36, com.example.demo.security.JWTAuthenticationFilter@ea45a5b, com.example.demo.security.JWTAuthenticationVerficationFilter@57f83c82, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5c16561a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@13dc383b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7a600e21, org.springframework.security.web.session.SessionManagementFilter@54ed249f, org.springframework.security.web.access.ExceptionTranslationFilter@39296cef, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3b0c38f2]
+2021-03-29 10:14:43,465 INFO  [main] org.springframework.scheduling.concurrent.ExecutorConfigurationSupport: Initializing ExecutorService 'applicationTaskExecutor'
+2021-03-29 10:14:44,130 INFO  [main] org.springframework.mock.web.MockServletContext: Initializing Spring TestDispatcherServlet ''
+2021-03-29 10:14:44,131 INFO  [main] org.springframework.web.servlet.FrameworkServlet: Initializing Servlet ''
+2021-03-29 10:14:44,153 INFO  [main] org.springframework.web.servlet.FrameworkServlet: Completed initialization in 21 ms
+2021-03-29 10:14:44,218 INFO  [main] org.springframework.boot.StartupInfoLogger: Started UserControllerTests in 12.919 seconds (JVM running for 15.836)
+2021-03-29 10:14:44,630 INFO  [main] com.example.demo.controllers.UserController: UserController -> createUser method is called: CreateUserRequest(username=test, password=testPassword, confirmPassword=testPassword)
+2021-03-29 10:14:45,034 INFO  [main] com.example.demo.controllers.UserController: UserController -> createUser successful: test
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 15.221 s - in com.example.demo.intergration_tests.UserControllerTests
+[INFO] Running com.example.demo.controllers.OrderControllerTest
+2021-03-29 10:14:45,489 INFO  [main] com.example.demo.controllers.OrderController: OrderController -> submit method is called: 
+2021-03-29 10:14:45,497 ERROR [main] com.example.demo.controllers.OrderController: OrderController -> submit: user is null
+2021-03-29 10:14:45,500 INFO  [main] com.example.demo.controllers.OrderController: OrderController -> getOrdersForUser method is called: 
+2021-03-29 10:14:45,500 ERROR [main] com.example.demo.controllers.OrderController: OrderController -> submit: user is null
+2021-03-29 10:14:45,501 INFO  [main] com.example.demo.controllers.OrderController: OrderController -> getOrdersForUser method is called: 
+2021-03-29 10:14:45,503 INFO  [main] com.example.demo.controllers.OrderController: OrderController -> display username order history successful test
+2021-03-29 10:14:45,535 INFO  [main] com.example.demo.controllers.OrderController: OrderController -> submit method is called: 
+2021-03-29 10:14:45,536 INFO  [main] com.example.demo.controllers.OrderController: OrderController -> submit successful
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.422 s - in com.example.demo.controllers.OrderControllerTest
+[INFO] Running com.example.demo.controllers.UserControllerTest
+2021-03-29 10:14:45,699 INFO  [main] com.example.demo.controllers.UserController: UserController -> createUser method is called: CreateUserRequest(username=test, password=testPassword, confirmPassword=testPassword)
+2021-03-29 10:14:45,705 INFO  [main] com.example.demo.controllers.UserController: UserController -> createUser successful: test
+2021-03-29 10:14:45,707 INFO  [main] com.example.demo.controllers.UserController: UserController -> findById method is called: 0
+2021-03-29 10:14:45,709 INFO  [main] com.example.demo.controllers.UserController: UserController -> findById method is called: 1
+2021-03-29 10:14:45,714 INFO  [main] com.example.demo.controllers.UserController: UserController -> createUser method is called: CreateUserRequest(username=test, password=1234567, confirmPassword=testPassword)
+2021-03-29 10:14:45,719 INFO  [main] com.example.demo.controllers.UserController: UserController -> createUser method is called: CreateUserRequest(username=test, password=testPassword, confirmPassword=testPassword)
+2021-03-29 10:14:45,720 INFO  [main] com.example.demo.controllers.UserController: UserController -> createUser successful: test
+2021-03-29 10:14:45,723 INFO  [main] com.example.demo.controllers.UserController: UserController -> createUser method is called: CreateUserRequest(username=test, password=testPassword, confirmPassword=testPassword)
+2021-03-29 10:14:45,724 INFO  [main] com.example.demo.controllers.UserController: UserController -> createUser successful: test
+2021-03-29 10:14:45,730 INFO  [main] com.example.demo.controllers.UserController: UserController -> findByUserName method is called: 
+2021-03-29 10:14:45,732 INFO  [main] com.example.demo.controllers.UserController: UserController -> createUser method is called: CreateUserRequest(username=test, password=123456, confirmPassword=testPassword)
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.173 s - in com.example.demo.controllers.UserControllerTest
+[INFO] Running com.example.demo.controllers.ItemControllerTest
+2021-03-29 10:14:45,836 INFO  [main] com.example.demo.controllers.ItemController: ItemController -> getItems method is called
+2021-03-29 10:14:45,840 INFO  [main] com.example.demo.controllers.ItemController: ItemController -> getItemById method is called: 0
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.103 s - in com.example.demo.controllers.ItemControllerTest
+[INFO] Running com.example.demo.controllers.CartControllerTest
+2021-03-29 10:14:45,856 INFO  [main] com.example.demo.controllers.CartController: CartController -- addTocart function -- Adding modifications to cart for user ModifyCartRequest(username=test, itemId=0, quantity=1)
+2021-03-29 10:14:45,879 INFO  [main] com.example.demo.controllers.CartController: CartController: Modifications added to cart successfully for user test
+2021-03-29 10:14:45,879 INFO  [main] com.example.demo.controllers.CartController: CartController -> removeFromcart is called: Removing modifications from cart for user test
+2021-03-29 10:14:45,880 INFO  [main] com.example.demo.controllers.CartController: CartController -> removeFromcart, Modifications removed from cart successfully for user test
+2021-03-29 10:14:45,887 INFO  [main] com.example.demo.controllers.CartController: CartController -> removeFromcart is called: Removing modifications from cart for user wrong
+2021-03-29 10:14:45,893 ERROR [main] com.example.demo.controllers.CartController: CartController -> removeFromcart, User wrong not found. Cannot remove modifications.
+2021-03-29 10:14:45,895 INFO  [main] com.example.demo.controllers.CartController: CartController -- addTocart function -- Adding modifications to cart for user ModifyCartRequest(username=wrong, itemId=0, quantity=1)
+2021-03-29 10:14:45,896 ERROR [main] com.example.demo.controllers.CartController: CartController User wrong not found -- addTocart function . Cannot add modifications.
+2021-03-29 10:14:45,901 INFO  [main] com.example.demo.controllers.CartController: CartController -> removeFromcart is called: Removing modifications from cart for user test
+2021-03-29 10:14:45,902 ERROR [main] com.example.demo.controllers.CartController: CartController-> removeFromcart: item is null
+2021-03-29 10:14:45,904 INFO  [main] com.example.demo.controllers.CartController: CartController -- addTocart function -- Adding modifications to cart for user ModifyCartRequest(username=test, itemId=2, quantity=1)
+2021-03-29 10:14:45,905 ERROR [main] com.example.demo.controllers.CartController: CartController:  Item 2 not found -- addTocart function. Cannot add modifications.
+2021-03-29 10:14:45,910 INFO  [main] com.example.demo.controllers.CartController: CartController -> removeFromcart is called: Removing modifications from cart for user test
+2021-03-29 10:14:45,917 ERROR [main] com.example.demo.controllers.CartController: CartController-> removeFromcart: item is null
+2021-03-29 10:14:45,919 INFO  [main] com.example.demo.controllers.CartController: CartController -- addTocart function -- Adding modifications to cart for user ModifyCartRequest(username=test, itemId=0, quantity=1)
+2021-03-29 10:14:45,920 INFO  [main] com.example.demo.controllers.CartController: CartController: Modifications added to cart successfully for user test
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.068 s - in com.example.demo.controllers.CartControllerTest
+[INFO] Running com.example.demo.SareetaApplicationTests
+2021-03-29 10:14:45,927 INFO  [main] org.springframework.test.context.support.AbstractTestContextBootstrapper: Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.example.demo.SareetaApplicationTests], using SpringBootContextLoader
+2021-03-29 10:14:45,934 INFO  [main] org.springframework.test.context.support.AbstractContextLoader: Could not detect default resource locations for test class [com.example.demo.SareetaApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+2021-03-29 10:14:45,936 INFO  [main] org.springframework.test.context.support.AnnotationConfigContextLoaderUtils: Could not detect default configuration classes for test class [com.example.demo.SareetaApplicationTests]: SareetaApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2021-03-29 10:14:45,947 INFO  [main] org.springframework.boot.test.context.SpringBootTestContextBootstrapper: Found @SpringBootConfiguration com.example.demo.SareetaApplication for test class com.example.demo.SareetaApplicationTests
+2021-03-29 10:14:45,958 INFO  [main] org.springframework.test.context.support.AbstractTestContextBootstrapper: Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2021-03-29 10:14:45,963 INFO  [main] org.springframework.test.context.support.AbstractTestContextBootstrapper: Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@1ddc5857, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@6f0df74, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@42bbd21c, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@57f1fbae, org.springframework.test.context.support.DirtiesContextTestExecutionListener@28901fe7, org.springframework.test.context.transaction.TransactionalTestExecutionListener@289b7efe, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@34ac72c3, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@6cd8c373, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@449f9628, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@37806ccb, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@606d2a92, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@4a84beb7]
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.1.5.RELEASE)
+
+2021-03-29 10:14:46,019 INFO  [main] org.springframework.boot.StartupInfoLogger: Starting SareetaApplicationTests on ip-172-31-5-152 with PID 31815 (started by jenkins in /bitnami/jenkins/jenkins_home/workspace/project2)
+2021-03-29 10:14:46,020 INFO  [main] org.springframework.boot.SpringApplication: No active profile set, falling back to default profiles: default
+2021-03-29 10:14:46,362 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate: Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-03-29 10:14:46,388 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate: Finished Spring Data repository scanning in 25ms. Found 4 repository interfaces.
+2021-03-29 10:14:46,615 INFO  [main] org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker: Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$802be37f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-03-29 10:14:46,772 INFO  [main] com.zaxxer.hikari.HikariDataSource: HikariPool-2 - Starting...
+2021-03-29 10:14:46,785 INFO  [main] com.zaxxer.hikari.HikariDataSource: HikariPool-2 - Start completed.
+2021-03-29 10:14:46,815 INFO  [main] org.hibernate.jpa.internal.util.LogHelper: HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2021-03-29 10:14:46,830 INFO  [main] org.hibernate.dialect.Dialect: HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-03-29 10:14:47,178 INFO  [main] org.springframework.orm.jpa.AbstractEntityManagerFactoryBean: Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-03-29 10:14:47,826 WARN  [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration: spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-03-29 10:14:47,994 INFO  [main] org.springframework.security.web.DefaultSecurityFilterChain: Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7be9582e, org.springframework.security.web.context.SecurityContextPersistenceFilter@6ea1fc9, org.springframework.security.web.header.HeaderWriterFilter@53ccbc15, org.springframework.web.filter.CorsFilter@73ac7716, org.springframework.security.web.authentication.logout.LogoutFilter@268eefe7, com.example.demo.security.JWTAuthenticationFilter@125ace20, com.example.demo.security.JWTAuthenticationVerficationFilter@7dbc77ca, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@75e068dc, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@437a4e61, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4c25687b, org.springframework.security.web.session.SessionManagementFilter@5817b0d1, org.springframework.security.web.access.ExceptionTranslationFilter@e0faed6, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@65d3a83]
+2021-03-29 10:14:48,393 INFO  [main] org.springframework.scheduling.concurrent.ExecutorConfigurationSupport: Initializing ExecutorService 'applicationTaskExecutor'
+2021-03-29 10:14:48,750 INFO  [main] org.springframework.boot.StartupInfoLogger: Started SareetaApplicationTests in 2.784 seconds (JVM running for 20.368)
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.833 s - in com.example.demo.SareetaApplicationTests
+2021-03-29 10:14:48,788 INFO  [Thread-5] org.springframework.scheduling.concurrent.ExecutorConfigurationSupport: Shutting down ExecutorService 'applicationTaskExecutor'
+2021-03-29 10:14:48,791 INFO  [Thread-5] org.springframework.orm.jpa.AbstractEntityManagerFactoryBean: Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-03-29 10:14:48,793 INFO  [Thread-3] org.springframework.scheduling.concurrent.ExecutorConfigurationSupport: Shutting down ExecutorService 'applicationTaskExecutor'
+2021-03-29 10:14:48,795 INFO  [Thread-3] org.springframework.orm.jpa.AbstractEntityManagerFactoryBean: Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-03-29 10:14:48,802 INFO  [Thread-3] com.zaxxer.hikari.HikariDataSource: HikariPool-1 - Shutdown initiated...
+2021-03-29 10:14:48,802 INFO  [Thread-5] com.zaxxer.hikari.HikariDataSource: HikariPool-2 - Shutdown initiated...
+2021-03-29 10:14:48,813 INFO  [Thread-3] com.zaxxer.hikari.HikariDataSource: HikariPool-1 - Shutdown completed.
+2021-03-29 10:14:48,815 INFO  [Thread-5] com.zaxxer.hikari.HikariDataSource: HikariPool-2 - Shutdown completed.
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 35, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- maven-war-plugin:3.2.2:war (default-war) @ auth-course ---
+[INFO] Packaging webapp
+[INFO] Assembling webapp [auth-course] in [/bitnami/jenkins/jenkins_home/workspace/project2/target/auth-course-0.0.1-SNAPSHOT]
+[INFO] Processing war project
+[INFO] Webapp assembled in [374 msecs]
+[INFO] Building war: /bitnami/jenkins/jenkins_home/workspace/project2/target/auth-course-0.0.1-SNAPSHOT.war
+[INFO] 
+[INFO] --- spring-boot-maven-plugin:2.1.5.RELEASE:repackage (repackage) @ auth-course ---
+[INFO] Replacing main artifact with repackaged archive
+[INFO] 
+[INFO] --- maven-install-plugin:2.5.2:install (default-install) @ auth-course ---
+[INFO] Installing /bitnami/jenkins/jenkins_home/workspace/project2/target/auth-course-0.0.1-SNAPSHOT.war to /opt/bitnami/jenkins/jenkins_home/.m2/repository/com/example/auth-course/0.0.1-SNAPSHOT/auth-course-0.0.1-SNAPSHOT.war
+[INFO] Installing /bitnami/jenkins/jenkins_home/workspace/project2/pom.xml to /opt/bitnami/jenkins/jenkins_home/.m2/repository/com/example/auth-course/0.0.1-SNAPSHOT/auth-course-0.0.1-SNAPSHOT.pom
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  36.550 s
+[INFO] Finished at: 2021-03-29T10:14:55Z
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
