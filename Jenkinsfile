@@ -33,7 +33,7 @@ pipeline {
             steps {
                 sh 'printenv'
                 withMaven(mavenSettingsConfig: 'maven-settings-global') {
-                    sh 'mvn clean package'
+                    sh 'mvn clean install -s mvn-settings.xml'
                 }
                
             }
